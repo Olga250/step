@@ -22,6 +22,7 @@ SECRET_KEY = '_j69q-lk*42^5t@l&0)7ayw2(^n&iwadjhfu*1_+utblm#42la'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -58,17 +59,16 @@ WSGI_APPLICATION = 'ask.wsgi.application'
 DATABASES = { 
      'default': { 
          'ENGINE': 'django.db.backends.mysql', 
-         'NAME': 'qa_db', 
-         'USER': 'root', 
-     } 
+         'NAME': 'ask', 
+         'USER': 'ask_user', 
+         'PASSWORD': '123456789', 
+         'HOST': '', 
+         'PORT': '3306', 
+     }	 
  } 
 
- 
 
-
-
-# Internationalization
-# https://docs.djangoproject.com/en/1.6/topics/i18n/
+#https://docs.djangoproject.com/en/1.6/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
