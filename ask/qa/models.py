@@ -1,32 +1,33 @@
 from django.db import models
 from django.contrib.auth.models import User 
 # Create your models here.
-#class QuestionManager(models.Manager):                                          
-  #     def new():                                                              
-   #             pass                                                            
-    #    def popular():                                                          
-     #         pass
-#class Question(models.Model):
-  #  title = models.CharField(max_length=300)
-  #  text = models.TextField(blank=True)
-  #  added_at = models.DateTimeField(null=True, blank=True)
-  #  rating = models.FloatField(null=True, blank=True)
-  #  author = models.ForeignKey(User)
- 
-class Question(models.Model):                                                   
-  # objects = QuestionManager() 
-    title = models.CharField(max_length=255)  
-    text = models.TextField()  
-    rating = models.IntegerField(default=0)  
-    added_at = models.DateTimeField(auto_now=True)  
-    author = models.ForeignKey(User, related_name="question_author")  
-    likes = models.ManyToManyField(User)  
-def get_absolute_url(self):
-   return reverse('question', kwargs={"id": self.id})
-def __unicode__(self):
-    return self.title
-class Answer(models.Model):  
-    text = models.TextField()  
-    added_at = models.DateTimeField(auto_now=True)  
-    question = models.ForeignKey(Question)  
-    author = models.ForeignKey(User, related_name="answer_author")  
+# вопрос 
+ class Question(models.Model): 
+     # заголовок вопроса 
+     title = models.CharField(max_length=255) 
+     # полный текст вопроса 
+     text = models.TextField() 
+     # дата добавления вопроса 
+     added_at = models.DateTimeField(blank=True, null=True) 
+     #рейтинг вопроса (число) 
+     rating = models.IntegerField(default = 0) 
+     #автор вопроса 
+     author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL) 
+     #список пользователей, поставивших "лайк" 
+     likes = models.ManyToManyField(User, related_name = '+') 
+     def __unicode__(self): 
+         return self.title 
+ # ответ 
+ class Answer(models.Model): 
+     # текст ответа 
+     text = models.TextField() 
+     # дата добавления ответа 
+     added_at = models.DateTimeField(blank=True, null=True) 
+     # вопрос, к которому относится ответ 
+     question = models.ForeignKey(Question, null=True, on_delete=models.SET_NULL) 
+     #автор ответа 
+     author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL) 
+     def __unicode__(self): 
+         return self.text 
+
+
