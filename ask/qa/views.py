@@ -1,5 +1,5 @@
- from django.shortcuts import render
-# Create your views here.  
+ from django.shortcuts import render 
+ # Create your views here. 
  from django.http import HttpResponse, HttpResponseBadRequest 
  from django.http import Http404 
  from django.shortcuts import get_object_or_404 
@@ -20,7 +20,7 @@
          page = paginator.page(page) 
      except EmptyPage: 
          page = paginator.page(paginator.num_pages) 
-     return render(request, 'qa/mainPage.html', { 
+     return render(request, 'index.html', { 
          'questions': page, 
          'paginator': paginator, 'page': page, 
      }) 
@@ -37,17 +37,16 @@
          page = paginator.page(page) 
      except EmptyPage: 
          page = paginator.page(paginator.num_pages) 
-     return render(request, 'qa/popular.html', { 
+     return render(request, 'popular.html', { 
          'questions': page, 
          'paginator': paginator, 'page': page, 
      }) 
  def question(request, slug): 
      question = get_object_or_404(Question, id = slug) 
      answers = Answer.objects.filter(question = question) 
-     return render(request, 'qa/question.html', { 
+     return render(request, 'question.html', { 
          'question': question, 
          'answers' : answers, 
      }) 
-
 
 
