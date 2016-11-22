@@ -10,7 +10,7 @@ class Question(models.Model):
     objects = QuestionManager() 
     title = models.CharField(max_length=255)  
     text = models.TextField()  
-    rating = models.IntegerField()  
+    rating = models.IntegerField(default=0)  
     added_at = models.DateTimeField(auto_now=True)  
     author = models.ForeignKey(User, related_name="question_author")  
     likes = models.ManyToManyField(User)  
