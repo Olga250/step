@@ -15,3 +15,10 @@ def draw_question(request, q_id):
        'title' : question.title,
        'text' : question.text, 
        })
+return render(request, 'question_load.html', {
+      'questions': page.object_list,
+      'paginator': paginator, 'page': page,
+    })
+last_questions = Question.odjects.all()
+last_questions = last_questions.order_by('-id')
+
