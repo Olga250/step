@@ -22,7 +22,6 @@ SECRET_KEY = '_j69q-lk*42^5t@l&0)7ayw2(^n&iwadjhfu*1_+utblm#42la'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -59,11 +58,12 @@ WSGI_APPLICATION = 'ask.wsgi.application'
 DATABASES = { 
      'default': { 
          'ENGINE': 'django.db.backends.mysql', 
-         'NAME': 'box_django', 
-         #'USER': 'nick', 
+         'NAME': 'qa_db', 
          'USER': 'root', 
      } 
  } 
+
+ 
 
 
 
